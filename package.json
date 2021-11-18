@@ -9,10 +9,14 @@
     "dev": "sls offline"
   },
   "dependencies": {
+    "@prisma/client": "^3.5.0",
     "apollo-server-lambda": "^3.5.0",
-    "graphql": "^15.0.1"
+    "graphql": "^15.0.1",
+    "graphql-iso-date": "^3.6.1",
+    "nexus": "^1.1.0"
   },
   "devDependencies": {
+    "prisma": "^3.5.0",
     "serverless": "^2.66.2",
     "serverless-dotenv-plugin": "^3.10.0",
     "serverless-offline": "^8.2.0",
