@@ -1,24 +1,14 @@
 import { ApolloServer, gql } from "apollo-server-lambda";
-import { world } from "./hello";
+import { Context } from "./context";
+import { baseSchema } from "./schema";
 
-// Construct a schema, using GraphQL schema language
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
-
-// Provide resolver functions for your schema fields
-const resolvers = {
-  Query: {
-    hello: () => world(),
-  },
-};
-
+const isDev = process.env.NODE_ENV != "production";
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  introspection: true,
+  schema: baseSchema,
+  introspection: isDev,
+  context: async (): Promise<Context> => {
+    return { userID: "2" };
+  },
 });
 
 export const handler = server.createHandler();
