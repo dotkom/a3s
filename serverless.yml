@@ -1,0 +1,21 @@
+service: event-graphql-lambda
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: eu-north-1
+functions:
+  graphql:
+    handler: src/index.handler
+    events:
+      - http:
+          path: graphql
+          method: post
+          cors: true
+      - http:
+          path: graphql
+          method: get
+          cors: true
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+  - serverless-plugin-typescript

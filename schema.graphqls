@@ -1,0 +1,49 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+enum EventType {
+  SOCIAL
+  COMPANY_PRESENTATION
+  COMPANY_ACADEMIC_COURSE
+}
+
+type Attendance {
+  maximum_capacity: Int!
+}
+type Company {
+  name: String!
+}
+
+type Event {
+  title: String!
+  start_date: Time!
+  end_date: Time!
+  location: String!
+  event_type: EventType!
+  organizer: String! # TODO: Change to organizer type
+  images: String! # TODO: Image
+  companies: [Company!] # can be null
+  attendance: Attendance
+}
+
+type User {
+  id: ID!
+  name: String!
+  age: Int!
+}
+
+type Query {
+  users: [User!]!
+}
+
+input CreateUserInput {
+  name: String!
+  age: Int!
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): User
+}
+
+scalar Time

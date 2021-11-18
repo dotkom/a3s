@@ -1,0 +1,22 @@
+{
+  "name": "a3s",
+  "version": "1.0.0",
+  "description": "Attendance as a service",
+  "main": "index.js",
+  "author": "kharann",
+  "license": "MIT",
+  "scripts": {
+    "dev": "sls offline"
+  },
+  "dependencies": {
+    "apollo-server-lambda": "^3.5.0",
+    "graphql": "^15.0.1"
+  },
+  "devDependencies": {
+    "serverless": "^2.66.2",
+    "serverless-dotenv-plugin": "^3.10.0",
+    "serverless-offline": "^8.2.0",
+    "serverless-plugin-typescript": "^2.1.0",
+    "typescript": "^4.5.2"
+  }
+}
