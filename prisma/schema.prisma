@@ -9,3 +9,16 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Participant {
+  id           String   @id @default(uuid())
+  registeredAt DateTime @default(now())
+  name         String
+}
+
+model Organizer {
+  id           String @id @default(uuid())
+  name         String
+  contactEmail String
+  link         String
+}

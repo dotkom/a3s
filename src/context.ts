@@ -1,3 +1,5 @@
+import { PrismaClient } from "@prisma/client";
+
 export interface Context {
-  userID: string;
+  prisma: PrismaClient;
 }
