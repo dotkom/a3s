@@ -1,28 +1,43 @@
-# GraphQL schema example
-#
-# https://gqlgen.com/getting-started/
-
-type Todo {
-  id: ID!
-  text: String!
-  done: Boolean!
-  user: User!
+enum EventType {
+  SOCIAL,
+  COMPANY_PRESENTATION,
+  COMPANY_COURSE,
+  EXPEDITION,
+  EXCURSION,
+  INTERNAL,
+  OTHER,
+  REALFAGSKJELLEREN
 }
 
-type User {
+scalar Time
+
+type Company {
   id: ID!
   name: String!
 }
 
+type Attendee {
+  id: ID!
+  name: String!
+  age: Int!
+}
+
+type Event {
+  id: ID!
+  title: String!
+  location: String!
+  startDate: Time!
+  endDate: Time!
+  signupStart: Time!
+  signupEnd: Time!
+  bannerImage: String!
+  eventType: EventType!
+  maximumCapacity: Int!
+  attendees: [Attendee!]!
+  organizers: [Company!]!
+}
+
 type Query {
-  todos: [Todo!]!
-}
-
-input NewTodo {
-  text: String!
-  userId: String!
-}
-
-type Mutation {
-  createTodo(input: NewTodo!): Todo!
+  events: [Event!]!
+  event(id: ID!): Event
 }
