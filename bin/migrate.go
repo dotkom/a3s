@@ -2,14 +2,20 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"github.com/dotkom/a3s/ent"
 	"github.com/dotkom/a3s/ent/migrate"
 	_ "github.com/lib/pq"
 	"log"
+	"os"
 )
 
 func main() {
-	client, err := ent.Open("postgres", "host=localhost port=5432 user=admin dbname=a3s password=admin sslmode=disable")
+	user := os.Getenv("POSTGRES_USER")
+	password := os.Getenv("POSTGRES_PASSWORD")
+	db := os.Getenv("POSTGRES_DB")
+	query := fmt.Sprintf("host=localhost port=5432 sslmode=disable user=%s password=%s dbname=%s", user, password, db)
+	client, err := ent.Open("postgres", query)
 	if err != nil {
 		log.Fatalf("failed connecting to postgres: %v", err)
 	}
