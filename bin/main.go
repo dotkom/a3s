@@ -16,7 +16,7 @@ func main() {
 	schema := generated.NewExecutableSchema(config)
 	srv := handler.NewDefaultServer(schema)
 
-	server.Get("/", srv.ServeHTTP)
+	server.Post("/", srv.ServeHTTP)
 	server.Get("/playground", playground.Handler("GraphQL Playground", "/"))
 
 	log.Println("started GraphQL server at http://localhost:8000/playground")
