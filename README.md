@@ -38,15 +38,14 @@ To start a development server on your machine follow these steps:
     export POSTGRES_USER=admin
     export POSTGRES_PASSWORD=admin
     export POSTGRES_DB=a3s
-    # Used by Migration script
-    export POSTGRESQL_URL="postgres://$POSTGRES_USER:POSTGRES_PASSWORD@localhost:5432/$POSTGRES_DB?sslmode=disable"
     ```
 
-2. Download Go dependencies with `go mod download`
-3. Generate `gqlgen` code with `go run github.com/99designs/gqlgen generate`
-4. Generate Ent entities with `go generate ./ent`
-5. Migrate the Ent schema to your local PostGreSQL database with `go run bin/migrate.go`
-6. Start the server with `go run bin/main.go`
+2. Start your PostGreSQL server (`docker-compose up psql`)
+3. Download Go dependencies with `go mod download`
+4. Generate `gqlgen` code with `go run github.com/99designs/gqlgen generate`
+5. Generate Ent entities with `go generate ./ent`
+6. Migrate the Ent schema to your local PostGreSQL database with `go run cmd/migrate.go`
+7. Start the server with `go run cmd/main.go`
 
 [gqlgen]: https://github.com/99designs/gqlgen
 [entgo]: https://entgo.io/
