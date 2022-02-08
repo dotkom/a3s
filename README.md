@@ -19,8 +19,8 @@
 
 ## Getting Started
 
-The service is a backend GraphQL API which is written in Golang. It uses [gqlgen](gqlgen) to create strongly typed
-GraphQL APIs and [Entgo](entgo) as a ORM in front of a PostGreSQL database.
+The service is a backend GraphQL API which is written in Golang. It uses [gqlgen][gqlgen] to create strongly typed
+GraphQL APIs and [Entgo][entgo] as a ORM in front of a PostGreSQL database.
 
 ### Prerequisites
 
