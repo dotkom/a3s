@@ -5,8 +5,6 @@ package resolvers
 
 import (
 	"context"
-	"fmt"
-
 	"github.com/dotkom/a3s/ent/company"
 	"github.com/dotkom/a3s/graph/generated"
 	"github.com/dotkom/a3s/graph/model"
@@ -21,7 +19,7 @@ func (r *queryResolver) Companies(ctx context.Context) ([]*model.Company, error)
 	var list []*model.Company
 	for _, result := range all {
 		record := model.Company{
-			ID:               fmt.Sprintf("%d", result.ID),
+			ID:               result.ID,
 			Name:             result.Name,
 			ShortDescription: result.ShortDescription,
 			LongDescription:  result.LongDescription,
@@ -42,7 +40,7 @@ func (r *queryResolver) Company(ctx context.Context, name string) (*model.Compan
 		return nil, err
 	}
 	return &model.Company{
-		ID:               fmt.Sprintf("%d", result.ID),
+		ID:               result.ID,
 		Name:             result.Name,
 		ShortDescription: result.ShortDescription,
 		LongDescription:  result.LongDescription,
