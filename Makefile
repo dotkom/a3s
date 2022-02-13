@@ -5,9 +5,10 @@ endif
 
 .PHONY: db download gen migrate main help
 
-app: db download gen migrate run-main
+# Starts database, download dependencies, generate GraphQL and database schema, add Ent schema to database, and start application.
+app: db download gen migrate main
 
-run-main:
+main:
 	@ $(GO) run cmd/main.go
 
 db:
@@ -21,3 +22,13 @@ gen:
 
 migrate:
 	@ $(GO) run cmd/migrate.go
+
+help:
+	@ echo "Usage	:  make <target>"
+	@ echo "Targets	:"
+	@ echo "	app - Execute all targets below"
+	@ echo "	db - Start database"
+	@ echo "	download - Download dependencies"
+	@ echo "	gen - Generate GraphQL and database schema"
+	@ echo "	migrate - Add Ent schema to database"
+	@ echo "	main - Start application"

@@ -5,6 +5,7 @@ package resolvers
 
 import (
 	"context"
+
 	"github.com/dotkom/a3s/ent/company"
 	"github.com/dotkom/a3s/graph/generated"
 	"github.com/dotkom/a3s/graph/model"
