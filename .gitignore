@@ -29,3 +29,5 @@ graph/model/models_gen.go
 ent/**/*.go
 !ent/schema/*.go
 !ent/generate.go
+
+.env
