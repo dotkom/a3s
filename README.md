@@ -34,11 +34,12 @@ To start development server you need the following components on your local mach
 To start a development server on your machine follow these steps:
 
 1. Set local environment variables required to run the application:
-    ```sh
-    export POSTGRES_USER=admin
-    export POSTGRES_PASSWORD=admin
-    export POSTGRES_DB=a3s
-    ```
+
+   ```sh
+   export POSTGRES_USER=admin
+   export POSTGRES_PASSWORD=admin
+   export POSTGRES_DB=a3s
+   ```
 
 2. Start your PostGreSQL server (`docker-compose up psql`)
 3. Download Go dependencies with `go mod download`
