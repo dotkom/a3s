@@ -5,25 +5,22 @@ package resolvers
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/dotkom/a3s/graph/generated"
 	"github.com/dotkom/a3s/graph/model"
 )
 
-func (r *queryResolver) Companies(ctx context.Context) ([]*model.Company, error) {
-	return Companies(r, ctx)
+func (r *queryResolver) Events(ctx context.Context, limit int, offset int) ([]*model.Event, error) {
+	panic(fmt.Errorf("not implemented"))
 }
 
-func (r *queryResolver) Company(ctx context.Context, name string) (*model.Company, error) {
-	return Company(r, ctx, name)
+func (r *queryResolver) Event(ctx context.Context, id int) (*model.Event, error) {
+	panic(fmt.Errorf("not implemented"))
 }
 
-func (r *queryResolver) EventOrganizers(ctx context.Context) ([]*model.EventOrganizer, error) {
-	return EventOrganizers(r, ctx)
-}
-
-func (r *queryResolver) EventOrganizer(ctx context.Context, name string) (*model.EventOrganizer, error) {
-	return EventOrganizer(r, ctx, name)
+func (r *queryResolver) UpcomingEvents(ctx context.Context, eventType *model.EventType) ([]*model.Event, error) {
+	panic(fmt.Errorf("not implemented"))
 }
 
 // Query returns generated.QueryResolver implementation.
