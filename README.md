@@ -14,7 +14,7 @@
 ## Table of Contents
 
 - [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
+    - [Prerequisites](#prerequisites)
 - [Development](#development)
 
 ## Getting Started
@@ -31,14 +31,28 @@ To start development server you need the following components on your local mach
 
 ### Development
 
+#### With `make`
+
+Make sure you have Docker running on your computer.
+
+Additionally, make sure you have sourced the environment variables below. This can be done by putting the environment
+variables in a file `.env`, and sourcing the environment variables using `source .env` in your terminal.
+
+To start development, simply run `make` in the project directory. 
+
+For more information, please read the [`Makefile`](./Makefile) or execute `make help` in the terminal.
+
+#### Without `make`
+
 To start a development server on your machine follow these steps:
 
 1. Set local environment variables required to run the application:
-    ```sh
-    export POSTGRES_USER=admin
-    export POSTGRES_PASSWORD=admin
-    export POSTGRES_DB=a3s
-    ```
+
+   ```sh
+   export POSTGRES_USER=admin
+   export POSTGRES_PASSWORD=admin
+   export POSTGRES_DB=a3s
+   ```
 
 2. Start your PostGreSQL server (`docker-compose up psql`)
 3. Download Go dependencies with `go mod download`
@@ -48,4 +62,5 @@ To start a development server on your machine follow these steps:
 7. Start the server with `go run cmd/main.go`
 
 [gqlgen]: https://github.com/99designs/gqlgen
+
 [entgo]: https://entgo.io/
