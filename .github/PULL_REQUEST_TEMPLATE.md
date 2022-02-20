@@ -1,3 +1,5 @@
+Closes: #[ISSUE_NUMBER]
+
 <!-- If the Pull Request is not ready to be merged, please use a draft pull request -->
 
 ## Changelog
