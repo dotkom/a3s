@@ -1,0 +1,15 @@
+scalar Time
+
+type Event {
+    id: Int!
+    startTime: Time!
+    endTime: Time!
+    location: String!
+    title: String!
+    shortDescription: String!
+    longDescription: String!
+    imageUrl: String
+    organizer: EventOrganizer!
+    companies: [Company!]!
+    attendance: Attendance
+}
