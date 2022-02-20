@@ -1,9 +1,14 @@
 scalar Time
 
 type Query {
-    companies: [Company!]!
-    company(name: String!): Company!
+    # TODO: Pagination
+    events(limit: Int!, offset: Int!): [Event!]!
+    event(id: Int!): Event!
 
-    eventOrganizers: [EventOrganizer!]!
-    eventOrganizer(name: String!): EventOrganizer!
+    upcomingEvents(
+        """
+        If eventType is not provided, all upcoming events will be fetched.
+        """
+        eventType: EventType
+    ): [Event!]!
 }

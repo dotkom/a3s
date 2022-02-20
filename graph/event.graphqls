@@ -7,18 +7,22 @@ enum EventType {
 
 type Event {
     id: Int!
+    title: String!
     startTime: Time!
     endTime: Time!
     location: String!
-    title: String!
     shortDescription: String!
     longDescription: String!
     imageUrl: String
     organizer: EventOrganizer!
     companies: [Company!]!
-    isAttendanceEvent: Boolean!
+    """
+    If attendance is Null, the event is an open event.
+    """
     attendance: Attendance
-    isPaidEvent: Boolean!
+    """
+    If price equals 0, the event is an unpaid event.
+    """
     price: Int!
     eventRules: [String!]!
     eventType: EventType
