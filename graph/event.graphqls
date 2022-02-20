@@ -17,7 +17,7 @@ type Event {
     organizer: EventOrganizer!
     companies: [Company!]!
     """
-    If attendance is Null, the event is an open event.
+    If attendance equals null, the event is an open event.
     """
     attendance: Attendance
     """
