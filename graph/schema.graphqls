@@ -1,0 +1,7 @@
+type Query {
+    companies: [Company!]!
+    company(name: String!): Company!
+
+    eventOrganizers: [EventOrganizer!]!
+    eventOrganizer(name: String!): EventOrganizer!
+}

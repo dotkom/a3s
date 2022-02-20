@@ -1,15 +1,10 @@
 type Company {
-  id: Int!
-  name: String!
-  shortDescription: String!
-  longDescription: String!
-  imageUrl: String!
-  site: String
-  contactEmail: String
-  contactTel: String
-}
-
-type Query {
-  companies: [Company!]!
-  company(name: String!): Company!
+    id: Int!
+    name: String!
+    shortDescription: String!
+    longDescription: String!
+    imageUrl: String!
+    site: String
+    contactEmail: String
+    contactTel: String
 }
