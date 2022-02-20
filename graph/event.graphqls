@@ -1,3 +1,10 @@
+enum EventType {
+    SOCIAL
+    COMPANY_ACADEMIC_COURSE
+    COMPANY_PRESENTATION
+    OTHER
+}
+
 type Event {
     id: Int!
     startTime: Time!
@@ -14,4 +21,5 @@ type Event {
     isPaidEvent: Boolean!
     price: Int!
     eventRules: [String!]!
+    eventType: EventType
 }
