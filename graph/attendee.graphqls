@@ -1,6 +1,8 @@
 type Attendee {
     id:Int!
-    # Note to self: userId points to the ID of a user on OnlineWeb
+    """
+    userId points to the ID of a user on OnlineWeb
+    """
     userId: Int!
     hasPaid: Boolean!
     isAttending: Boolean!
