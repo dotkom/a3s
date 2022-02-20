@@ -21,4 +21,12 @@ that need to be made.
 
 ### Before
 
+<details>
+<!-- Paste "Before" image here -->
+</details>
+
 ### After
+
+<details>
+<!-- Paste "After" image here -->
+</details>
