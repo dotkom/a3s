@@ -1,0 +1,9 @@
+type Attendee {
+    id:Int!
+    """
+    userId points to the ID of a user on OnlineWeb
+    """
+    userId: Int!
+    hasPaid: Boolean!
+    isAttending: Boolean!
+}

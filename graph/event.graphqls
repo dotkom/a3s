@@ -1,0 +1,29 @@
+enum EventType {
+    SOCIAL
+    COMPANY_ACADEMIC_COURSE
+    COMPANY_PRESENTATION
+    OTHER
+}
+
+type Event {
+    id: Int!
+    title: String!
+    startTime: Time!
+    endTime: Time!
+    location: String!
+    shortDescription: String!
+    longDescription: String!
+    imageUrl: String
+    organizer: EventOrganizer!
+    companies: [Company!]!
+    """
+    If registration is null, the event is an open event.
+    """
+    registration: Registration
+    """
+    If price equals 0, the event is an unpaid event.
+    """
+    price: Int!
+    eventRules: [String!]!
+    eventType: EventType
+}

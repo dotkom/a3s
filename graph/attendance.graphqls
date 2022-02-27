@@ -1,0 +1,7 @@
+type Registration {
+    id: Int!
+    startTime: Time!
+    endTime: Time!
+    unattendDeadline: Time!
+    attendees: [Attendee!]!
+}
