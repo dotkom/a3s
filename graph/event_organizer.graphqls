@@ -3,3 +3,8 @@ type EventOrganizer {
     name: String!
     email: String!
 }
+
+input CreateEventOrganizerInput {
+    name: String!
+    email: String!
+}

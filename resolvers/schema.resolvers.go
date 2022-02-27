@@ -11,6 +11,10 @@ import (
 	"github.com/dotkom/a3s/graph/model"
 )
 
+func (r *mutationResolver) CreateEventOrganizer(ctx context.Context, data model.CreateEventOrganizerInput) (*model.EventOrganizer, error) {
+	return CreateEventOrganizer(r, ctx, data)
+}
+
 func (r *queryResolver) Events(ctx context.Context, limit int, offset int) ([]*model.Event, error) {
 	panic(fmt.Errorf("not implemented"))
 }
@@ -23,7 +27,11 @@ func (r *queryResolver) UpcomingEvents(ctx context.Context, eventType *model.Eve
 	panic(fmt.Errorf("not implemented"))
 }
 
+// Mutation returns generated.MutationResolver implementation.
+func (r *Resolver) Mutation() generated.MutationResolver { return &mutationResolver{r} }
+
 // Query returns generated.QueryResolver implementation.
 func (r *Resolver) Query() generated.QueryResolver { return &queryResolver{r} }
 
+type mutationResolver struct{ *Resolver }
 type queryResolver struct{ *Resolver }

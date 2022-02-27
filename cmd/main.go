@@ -6,6 +6,7 @@ import (
 	"github.com/99designs/gqlgen/graphql/playground"
 	"github.com/dotkom/a3s/ent"
 	"github.com/dotkom/a3s/graph/generated"
+	"github.com/dotkom/a3s/repository"
 	"github.com/dotkom/a3s/resolvers"
 	"github.com/go-chi/chi/v5"
 	_ "github.com/lib/pq"
@@ -26,7 +27,10 @@ func main() {
 	defer client.Close()
 
 	server := chi.NewRouter()
-	config := generated.Config{Resolvers: &resolvers.Resolver{Client: client}}
+	resolver := resolvers.Resolver{
+		EventOrganizerRepository: &repository.EventOrganizerRepository{Client: client},
+	}
+	config := generated.Config{Resolvers: &resolver}
 	schema := generated.NewExecutableSchema(config)
 	srv := handler.NewDefaultServer(schema)
 
