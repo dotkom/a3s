@@ -1,0 +1,4 @@
+type RuleBundle {
+    id: ID!
+    name: String!
+}
