@@ -2,6 +2,7 @@ package schema
 
 import (
 	"entgo.io/ent"
+	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
 )
 
@@ -32,5 +33,8 @@ func (Event) Edges() []ent.Edge {
 	// - Registration
 	// - list of event rules
 	// - EventType
-	return nil
+	return []ent.Edge{
+		edge.From("events", Company.Type).
+			Ref("companies"),
+	}
 }
