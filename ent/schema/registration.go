@@ -2,6 +2,7 @@ package schema
 
 import (
 	"entgo.io/ent"
+	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
 )
 
@@ -19,8 +20,10 @@ func (Registration) Fields() []ent.Field {
 	}
 }
 
-// Edges of the Registration.
+// Edges of the Registratin.
 func (Registration) Edges() []ent.Edge {
-	// TODO: Relation to attendees
-	return nil
+	// TODO: Edges to Extras and RuleBundle
+	return []ent.Edge{
+		edge.To("attendees", Attendee.Type),
+	}
 }
