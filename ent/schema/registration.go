@@ -20,7 +20,7 @@ func (Registration) Fields() []ent.Field {
 	}
 }
 
-// Edges of the Registratin.
+// Edges of the Registration.
 func (Registration) Edges() []ent.Edge {
 	// TODO: Edges to Extras and RuleBundle
 	return []ent.Edge{

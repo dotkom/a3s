@@ -20,10 +20,5 @@ func (EventOrganizer) Fields() []ent.Field {
 
 // Edges of the EventOrganizer.
 func (EventOrganizer) Edges() []ent.Edge {
-	return []ent.Edge{
-		//edge.From("event", Event.Type).
-		//	Ref("organizer").
-		//	Unique(),
-
-	}
+	return nil
 }
