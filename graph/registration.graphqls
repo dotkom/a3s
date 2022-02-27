@@ -1,5 +1,5 @@
 type Registration {
-    id: Int!
+    id: ID!
     startTime: Time!
     endTime: Time!
     unattendDeadline: Time!

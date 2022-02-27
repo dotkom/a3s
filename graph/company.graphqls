@@ -1,5 +1,5 @@
 type Company {
-    id: Int!
+    id: ID!
     name: String!
     shortDescription: String!
     longDescription: String!
