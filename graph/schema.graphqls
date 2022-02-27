@@ -12,3 +12,7 @@ type Query {
         eventType: EventType
     ): [Event!]!
 }
+
+type Mutation {
+    createEventOrganizer(data: CreateEventOrganizerInput!): EventOrganizer!
+}
