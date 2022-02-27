@@ -3,7 +3,7 @@ scalar Time
 type Query {
     # TODO: Pagination
     events(limit: Int!, offset: Int!): [Event!]!
-    event(id: Int!): Event!
+    event(id: ID!): Event!
 
     upcomingEvents(
         """

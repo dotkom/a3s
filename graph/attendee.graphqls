@@ -3,7 +3,7 @@ type Attendee {
     """
     userId points to the ID of a user on OnlineWeb
     """
-    userId: Int!
+    userid: ID!
     hasPaid: Boolean!
     isAttending: Boolean!
 }

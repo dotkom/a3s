@@ -6,7 +6,7 @@ enum EventType {
 }
 
 type Event {
-    id: Int!
+    id: ID!
     title: String!
     startTime: Time!
     endTime: Time!

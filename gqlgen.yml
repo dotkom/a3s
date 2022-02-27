@@ -45,7 +45,9 @@ autobind:
 models:
   ID:
     model:
-      - github.com/99designs/gqlgen/graphql.ID
+      # We map GraphQL ID to Int, because the database is modelled to use an int.
+      # If we wanted to map this to some arbitrary string format, we could use
+      # github.com/99designs/gqlgen/graphql.ID instead.
       - github.com/99designs/gqlgen/graphql.Int
       - github.com/99designs/gqlgen/graphql.Int64
       - github.com/99designs/gqlgen/graphql.Int32
