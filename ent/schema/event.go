@@ -29,7 +29,7 @@ func (Event) Edges() []ent.Edge {
 	// TODO: Relation to:
 	// - EventOrganizer
 	// - list of Company entities
-	// - Attendance
+	// - Registration
 	// - list of event rules
 	// - EventType
 	return nil

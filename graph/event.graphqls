@@ -17,9 +17,9 @@ type Event {
     organizer: EventOrganizer!
     companies: [Company!]!
     """
-    If attendance equals null, the event is an open event.
+    If registration is null, the event is an open event.
     """
-    attendance: Attendance
+    registration: Registration
     """
     If price equals 0, the event is an unpaid event.
     """

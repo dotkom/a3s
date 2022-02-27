@@ -5,13 +5,13 @@ import (
 	"entgo.io/ent/schema/field"
 )
 
-// Attendance holds the schema definition for the Attendance entity.
-type Attendance struct {
+// Registration holds the schema definition for the Registration entity.
+type Registration struct {
 	ent.Schema
 }
 
-// Fields of the Attendance.
-func (Attendance) Fields() []ent.Field {
+// Fields of the Registration.
+func (Registration) Fields() []ent.Field {
 	return []ent.Field{
 		field.Time("start_time"),
 		field.Time("end_time"),
@@ -19,8 +19,8 @@ func (Attendance) Fields() []ent.Field {
 	}
 }
 
-// Edges of the Attendance.
-func (Attendance) Edges() []ent.Edge {
+// Edges of the Registration.
+func (Registration) Edges() []ent.Edge {
 	// TODO: Relation to attendees
 	return nil
 }

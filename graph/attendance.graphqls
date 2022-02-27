@@ -1,5 +1,4 @@
-
-type Attendance {
+type Registration {
     id: Int!
     startTime: Time!
     endTime: Time!
