@@ -1,0 +1,4 @@
+type Extra {
+    id: ID!
+    name: String!
+}

@@ -22,8 +22,9 @@ func (Registration) Fields() []ent.Field {
 
 // Edges of the Registration.
 func (Registration) Edges() []ent.Edge {
-	// TODO: Edges to Extras and RuleBundle
 	return []ent.Edge{
 		edge.To("attendees", Attendee.Type),
+		edge.To("extras", Extra.Type),
+		edge.To("rule_bundles", RuleBundle.Type),
 	}
 }
