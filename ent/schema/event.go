@@ -34,7 +34,10 @@ func (Event) Edges() []ent.Edge {
 	// - list of event rules
 	// - EventType
 	return []ent.Edge{
-		edge.From("events", Company.Type).
-			Ref("companies"),
+		edge.To("organizer", EventOrganizer.Type).
+			Unique(),
+		edge.To("companies", Company.Type),
+		edge.To("registration", Registration.Type).
+			Unique(),
 	}
 }

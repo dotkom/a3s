@@ -2,7 +2,6 @@ package schema
 
 import (
 	"entgo.io/ent"
-	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
 )
 
@@ -25,6 +24,6 @@ func (EventOrganizer) Edges() []ent.Edge {
 		//edge.From("event", Event.Type).
 		//	Ref("organizer").
 		//	Unique(),
-		edge.To("event", Event.Type),
+
 	}
 }
