@@ -23,6 +23,13 @@ gen:
 migrate:
 	@ $(GO) run cmd/migrate.go
 
+build: download gen
+	@ $(GO) build -o bin/main -v cmd/main.go
+	@ $(GO) build -o bin/migrate -v cmd/migrate.go
+
+test: db download gen migrate
+	@ $(GO) test -v ./repository/... ./resolvers/... ./graph/... ./ent/...
+
 help:
 	@ echo "Usage	:  make <target>"
 	@ echo "Targets	:"
