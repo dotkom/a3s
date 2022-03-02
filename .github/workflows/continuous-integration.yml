@@ -7,9 +7,9 @@ on:
     branches: [ main ]
 
 env:
-  POSTGRES_USER: "{{ secrets.TEST_POSTGRES_USER }}"
-  POSTGRES_PASSWORD: "{{ secrets.TEST_POSTGRES_PASSWORD }}"
-  POSTGRES_DB: "{{ secrets.TEST_POSTGRES_DB }}"
+  POSTGRES_USER: "${{ secrets.TEST_POSTGRES_USER }}"
+  POSTGRES_PASSWORD: "${{ secrets.TEST_POSTGRES_PASSWORD }}"
+  POSTGRES_DB: "${{ secrets.TEST_POSTGRES_DB }}"
 
 jobs:
 
