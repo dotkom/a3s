@@ -34,15 +34,17 @@ func setupEventTest(t *testing.T) (func(*testing.T), EventRepository) {
 }
 
 func TestEventRepository_Create(t *testing.T) {
-	cleanup, r := setupEventTest(t)
+	cleanup, eventOrganizerRepository, eventRepository := SetupTest(t)
 	defer cleanup(t)
-	count, err := r.Count()
+	count, err := eventRepository.Count()
 	assert.NoErrorf(t, err, "failed to count events")
 	assert.Equal(t, count, 0)
-	expected, err := r.Create("title", time.Now(), time.Now(), 1, 0, model.EventTypeSocial, nil, nil, nil, nil, []int{})
+	eventOrganizer, err := eventOrganizerRepository.Create("name", "email@example.com")
 	assert.NoErrorf(t, err, "error creating event organizer")
-	actual, err := r.Get(expected.ID)
-	assert.NoErrorf(t, err, "error getting event organizer")
+	expected, err := eventRepository.Create("title", time.Now(), time.Now(), eventOrganizer.ID, 0, model.EventTypeSocial, nil, nil, nil, nil, []int{})
+	assert.NoErrorf(t, err, "error creating event")
+	actual, err := eventRepository.Get(expected.ID)
+	assert.NoErrorf(t, err, "error getting event")
 	assert.Equal(t, expected.ID, actual.ID)
 }
 
