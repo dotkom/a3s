@@ -43,3 +43,39 @@ func (r *EventRepository) Create(
 	}
 	return event, nil
 }
+
+func (r *EventRepository) Count() (int, error) {
+	ctx := context.Background()
+	count, err := r.Client.Event.Query().Count(ctx)
+	if err != nil {
+		return 0, err
+	}
+	return count, nil
+}
+
+func (r *EventRepository) All() ([]*ent.Event, error) {
+	ctx := context.Background()
+	events, err := r.Client.Event.Query().All(ctx)
+	if err != nil {
+		return nil, err
+	}
+	return events, nil
+}
+
+func (r *EventRepository) Get(id int) (*ent.Event, error) {
+	ctx := context.Background()
+	event, err := r.Client.Event.Get(ctx, id)
+	if err != nil {
+		return nil, err
+	}
+	return event, nil
+}
+
+func (r *EventRepository) Delete(id int) error {
+	ctx := context.Background()
+	err := r.Client.Event.DeleteOneID(id).Exec(ctx)
+	if err != nil {
+		return err
+	}
+	return nil
+}
