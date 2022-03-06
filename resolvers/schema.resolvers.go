@@ -23,6 +23,10 @@ func (r *queryResolver) Event(ctx context.Context, id int) (*model.Event, error)
 	panic(fmt.Errorf("not implemented"))
 }
 
+func (r *queryResolver) EventOrganizer(ctx context.Context, id int) (*model.EventOrganizer, error) {
+	return EventOrganizer(r, ctx, id)
+}
+
 func (r *queryResolver) UpcomingEvents(ctx context.Context, eventType *model.EventType) ([]*model.Event, error) {
 	panic(fmt.Errorf("not implemented"))
 }

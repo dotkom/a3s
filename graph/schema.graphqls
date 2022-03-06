@@ -5,6 +5,8 @@ type Query {
     events(limit: Int!, offset: Int!): [Event!]!
     event(id: ID!): Event!
 
+    eventOrganizer(id: ID!): EventOrganizer!
+
     upcomingEvents(
         """
         If eventType is not provided, all upcoming events will be fetched.
