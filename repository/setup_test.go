@@ -10,7 +10,12 @@ import (
 	"testing"
 )
 
-func SetupTest(t *testing.T) (func(*testing.T), EventOrganizerRepository, EventRepository) {
+type TestContext struct {
+	EventOrganizerRepository EventOrganizerRepository
+	EventRepository          EventRepository
+}
+
+func SetupTest(t *testing.T) (func(*testing.T), TestContext) {
 	user := os.Getenv("POSTGRES_USER")
 	password := os.Getenv("POSTGRES_PASSWORD")
 	db := os.Getenv("POSTGRES_DB")
@@ -22,6 +27,11 @@ func SetupTest(t *testing.T) (func(*testing.T), EventOrganizerRepository, EventR
 	eventOrganizerRepository := EventOrganizerRepository{Client: client}
 	eventRepository := EventRepository{Client: client}
 
+	testContext := TestContext{
+		EventRepository:          eventRepository,
+		EventOrganizerRepository: eventOrganizerRepository,
+	}
+
 	return func(t *testing.T) {
 		ctx := context.Background()
 		client.Event.Delete().ExecX(ctx)
@@ -30,5 +40,5 @@ func SetupTest(t *testing.T) (func(*testing.T), EventOrganizerRepository, EventR
 		if err != nil {
 			log.Fatalf("failed closing postgres: %v", err)
 		}
-	}, eventOrganizerRepository, eventRepository
+	}, testContext
 }
