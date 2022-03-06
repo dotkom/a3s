@@ -3,7 +3,7 @@ ifeq ($(GO),)
     GO := go
 endif
 
-.PHONY: db download gen migrate main help test
+.PHONY: db download gen migrate main help entity test
 
 # Starts database, download dependencies, generate GraphQL and database schema, add Ent schema to database, and start application.
 app: db download gen migrate main
@@ -30,6 +30,9 @@ build: download gen
 test: db download gen migrate
 	@ $(GO) test -v ./repository/... ./resolvers/... ./graph/... ./ent/...
 
+entity:
+	@ sh ./generate-entity.sh $(name)
+
 help:
 	@ echo "Usage	:  make <target>"
 	@ echo "Targets	:"
@@ -39,4 +42,5 @@ help:
 	@ echo "	gen - Generate GraphQL and database schema"
 	@ echo "	migrate - Add Ent schema to database"
 	@ echo "	main - Start application"
+	@ echo "	entity - Creates an Ent entity. Supply the entity name in PascalCase with the 'name' argument."
 	@ echo "	test - Test application"
