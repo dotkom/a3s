@@ -17,22 +17,17 @@ func (Event) Fields() []ent.Field {
 		field.String("title"),
 		field.Time("start_time"),
 		field.Time("end_time"),
-		field.String("location"),
-		field.String("short_description"),
-		field.String("long_description"),
-		field.String("image_url"),
+		field.String("location").Optional(),
+		field.String("short_description").Optional(),
+		field.String("long_description").Optional(),
+		field.String("image_url").Optional(),
 		field.Int("price"),
+		field.String("event_type"),
 	}
 }
 
 // Edges of the Event.
 func (Event) Edges() []ent.Edge {
-	// TODO: Relation to:
-	// - EventOrganizer
-	// - list of Company entities
-	// - Registration
-	// - list of event rules
-	// - EventType
 	return []ent.Edge{
 		edge.To("organizer", EventOrganizer.Type).
 			Unique(),

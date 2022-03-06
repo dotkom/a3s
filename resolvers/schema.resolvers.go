@@ -15,6 +15,10 @@ func (r *mutationResolver) CreateEventOrganizer(ctx context.Context, data model.
 	return CreateEventOrganizer(r, ctx, data)
 }
 
+func (r *mutationResolver) CreateEvent(ctx context.Context, data model.CreateEventInput) (*model.Event, error) {
+	return CreateEvent(r, ctx, data)
+}
+
 func (r *queryResolver) Events(ctx context.Context, limit int, offset int) ([]*model.Event, error) {
 	panic(fmt.Errorf("not implemented"))
 }

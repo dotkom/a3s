@@ -29,6 +29,7 @@ func main() {
 	server := chi.NewRouter()
 	resolver := resolvers.Resolver{
 		EventOrganizerRepository: &repository.EventOrganizerRepository{Client: client},
+		EventRepository:          &repository.EventRepository{Client: client},
 	}
 	config := generated.Config{Resolvers: &resolver}
 	schema := generated.NewExecutableSchema(config)

@@ -25,5 +25,19 @@ type Event {
     """
     price: Int!
     eventRules: [String!]!
-    eventType: EventType
+    eventType: EventType!
+}
+
+input CreateEventInput {
+    title: String!
+    startTime: Time!
+    endTime: Time!
+    organizer: ID!
+    price: Int!
+    eventType: EventType!
+    location: String
+    shortDescription: String
+    longDescription: String
+    imageUrl: String
+    companies: [ID!]!
 }
