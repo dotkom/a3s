@@ -66,6 +66,8 @@ func TestEventOrganizerRepository_Delete(t *testing.T) {
 	count, err := eventOrganizerRepository.Count()
 	assert.NoErrorf(t, err, "failed to count event organizers")
 	assert.Equal(t, count, 0)
+	err = eventOrganizerRepository.Delete(0)
+	assert.Errorf(t, err, "error deleting event organizer")
 	deletable, err := eventOrganizerRepository.Create("Fagkom", "fagkom@online.ntnu.no")
 	assert.NoErrorf(t, err, "error creating event organizer")
 	count, err = eventOrganizerRepository.Count()
