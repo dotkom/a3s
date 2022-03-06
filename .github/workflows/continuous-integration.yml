@@ -10,6 +10,7 @@ env:
   POSTGRES_USER: "${{ secrets.TEST_POSTGRES_USER }}"
   POSTGRES_PASSWORD: "${{ secrets.TEST_POSTGRES_PASSWORD }}"
   POSTGRES_DB: "${{ secrets.TEST_POSTGRES_DB }}"
+  CODECOV_TOKEN: "${{ secrets.CODECOV_TOKEN }}"
 
 jobs:
 
@@ -28,3 +29,9 @@ jobs:
 
     - name: Test
       run: make test
+      
+    - name: Generate code coverage report
+      run: make coverage
+    
+    - name: Upload coverage to Codecov
+      run: bash <(curl -s https://codecov.io/bash)
