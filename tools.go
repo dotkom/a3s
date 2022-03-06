@@ -3,4 +3,8 @@
 
 package tools
 
-import _ "github.com/99designs/gqlgen"
+import (
+	_ "entgo.io/ent/cmd/ent"
+	_ "entgo.io/ent/cmd/internal/printer"
+	_ "github.com/99designs/gqlgen"
+)
