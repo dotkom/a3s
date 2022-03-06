@@ -42,8 +42,5 @@ help:
 	@ echo "	gen - Generate GraphQL and database schema"
 	@ echo "	migrate - Add Ent schema to database"
 	@ echo "	main - Start application"
-<<<<<<< HEAD
 	@ echo "	entity - Creates an Ent entity. Supply the entity name in PascalCase with the 'name' argument."
-=======
 	@ echo "	test - Test application"
->>>>>>> main
