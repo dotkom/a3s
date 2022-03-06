@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"github.com/dotkom/a3s/ent"
-	"github.com/dotkom/a3s/ent/eventorganizer"
 	_ "github.com/lib/pq"
 	"github.com/stretchr/testify/assert"
 	"log"
@@ -35,12 +34,71 @@ func setupTest(t *testing.T) (func(*testing.T), EventOrganizerRepository) {
 func TestEventOrganizerRepository_Create(t *testing.T) {
 	cleanup, r := setupTest(t)
 	defer cleanup(t)
-	ctx := context.Background()
-	count, _ := r.Client.EventOrganizer.Query().Count(ctx)
+	count, err := r.Count()
+	assert.NoErrorf(t, err, "failed to count event organizers")
 	assert.Equal(t, count, 0)
 	expected, err := r.Create("Fagkom", "fagkom@online.ntnu.no")
 	assert.NoErrorf(t, err, "error creating event organizer")
-	actual, err := r.Client.EventOrganizer.Query().Where(eventorganizer.Name("Fagkom")).Only(ctx)
+	actual, err := r.Get(expected.ID)
 	assert.NoErrorf(t, err, "error getting event organizer")
 	assert.Equal(t, expected.ID, actual.ID)
+}
+
+func TestEventOrganizerRepository_Get(t *testing.T) {
+	cleanup, r := setupTest(t)
+	defer cleanup(t)
+	_, err := r.Get(0)
+	assert.Errorf(t, err, "non-existent organizer should be error")
+	expected, err := r.Create("Fagkom", "fagkom@online.ntnu.no")
+	assert.NoErrorf(t, err, "error creating event organizer")
+	actual, err := r.Get(expected.ID)
+	assert.NoErrorf(t, err, "error getting event organizer")
+	assert.Equal(t, expected.ID, actual.ID)
+}
+
+func TestEventOrganizerRepository_Count(t *testing.T) {
+	cleanup, r := setupTest(t)
+	defer cleanup(t)
+	count, err := r.Count()
+	assert.NoErrorf(t, err, "failed to count event organizers")
+	assert.Equal(t, count, 0)
+	_, err = r.Create("Fagkom", "fagkom@online.ntnu.no")
+	assert.NoErrorf(t, err, "error creating event organizer")
+	count, err = r.Count()
+	assert.NoErrorf(t, err, "failed to count event organizers")
+	assert.Equal(t, count, 1)
+}
+
+func TestEventOrganizerRepository_All(t *testing.T) {
+	cleanup, r := setupTest(t)
+	defer cleanup(t)
+	count, err := r.Count()
+	assert.NoErrorf(t, err, "failed to count event organizers")
+	assert.Equal(t, count, 0)
+	_, err = r.Create("Fagkom", "fagkom@online.ntnu.no")
+	assert.NoErrorf(t, err, "error creating event organizer")
+	count, err = r.Count()
+	assert.NoErrorf(t, err, "failed to count event organizers")
+	assert.Equal(t, count, 1)
+	organizers, err := r.All()
+	assert.NoErrorf(t, err, "failed to get all event organizers")
+	assert.Equal(t, len(organizers), 1)
+}
+
+func TestEventOrganizerRepository_Delete(t *testing.T) {
+	cleanup, r := setupTest(t)
+	defer cleanup(t)
+	count, err := r.Count()
+	assert.NoErrorf(t, err, "failed to count event organizers")
+	assert.Equal(t, count, 0)
+	deletable, err := r.Create("Fagkom", "fagkom@online.ntnu.no")
+	assert.NoErrorf(t, err, "error creating event organizer")
+	count, err = r.Count()
+	assert.NoErrorf(t, err, "failed to count event organizers")
+	assert.Equal(t, count, 1)
+	err = r.Delete(deletable.ID)
+	assert.NoErrorf(t, err, "error deleting event organizer")
+	count, err = r.Count()
+	assert.NoErrorf(t, err, "failed to count event organizers")
+	assert.Equal(t, count, 0)
 }
