@@ -3,7 +3,7 @@ ifeq ($(GO),)
     GO := go
 endif
 
-.PHONY: db download gen migrate main help
+.PHONY: db download gen migrate main help test
 
 # Starts database, download dependencies, generate GraphQL and database schema, add Ent schema to database, and start application.
 app: db download gen migrate main
@@ -39,3 +39,4 @@ help:
 	@ echo "	gen - Generate GraphQL and database schema"
 	@ echo "	migrate - Add Ent schema to database"
 	@ echo "	main - Start application"
+	@ echo "	test - Test application"
