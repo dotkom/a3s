@@ -6,4 +6,5 @@ import "github.com/dotkom/a3s/repository"
 
 type Resolver struct {
 	EventOrganizerRepository *repository.EventOrganizerRepository
+	EventRepository          *repository.EventRepository
 }

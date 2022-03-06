@@ -17,4 +17,5 @@ type Query {
 
 type Mutation {
     createEventOrganizer(data: CreateEventOrganizerInput!): EventOrganizer!
+    createEvent(data: CreateEventInput!): Event!
 }
