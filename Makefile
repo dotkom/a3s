@@ -30,6 +30,9 @@ build: download gen
 test: db download gen migrate
 	@ $(GO) test -v ./repository/... ./resolvers/... ./graph/... ./ent/...
 
+coverage: db download gen migrate
+	@ $(GO) test -v -race -covermode=atomic -coverprofile=coverage.out ./repository/... ./resolvers/... ./graph/... ./ent/...
+
 entity:
 	@ sh ./generate-entity.sh $(name)
 
@@ -44,3 +47,4 @@ help:
 	@ echo "	main - Start application"
 	@ echo "	entity - Creates an Ent entity. Supply the entity name in PascalCase with the 'name' argument."
 	@ echo "	test - Test application"
+	@ echo "	coverage - Generate coverage report for the tests"
