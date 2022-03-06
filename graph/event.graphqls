@@ -35,4 +35,9 @@ input CreateEventInput {
     organizer: ID!
     price: Int!
     eventType: EventType!
+    location: String
+    shortDescription: String
+    longDescription: String
+    imageUrl: String
+    companies: [ID!]!
 }
