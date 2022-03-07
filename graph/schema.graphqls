@@ -16,6 +16,11 @@ type Query {
 }
 
 type Mutation {
+    # EventOrganizer Mutations
     createEventOrganizer(data: CreateEventOrganizerInput!): EventOrganizer!
+    updateEventOrganizerName(id: ID!, name: String!): EventOrganizer!
+    updateEventOrganizerEmail(id: ID!, email: String!): EventOrganizer!
+
+    # Event Mutations
     createEvent(data: CreateEventInput!): Event!
 }

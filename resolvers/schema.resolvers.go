@@ -15,6 +15,14 @@ func (r *mutationResolver) CreateEventOrganizer(ctx context.Context, data model.
 	return CreateEventOrganizer(r, ctx, data)
 }
 
+func (r *mutationResolver) UpdateEventOrganizerName(ctx context.Context, id int, name string) (*model.EventOrganizer, error) {
+	return UpdateEventOrganizerName(r, ctx, id, name)
+}
+
+func (r *mutationResolver) UpdateEventOrganizerEmail(ctx context.Context, id int, email string) (*model.EventOrganizer, error) {
+	return UpdateEventOrganizerEmail(r, ctx, id, email)
+}
+
 func (r *mutationResolver) CreateEvent(ctx context.Context, data model.CreateEventInput) (*model.Event, error) {
 	return CreateEvent(r, ctx, data)
 }
