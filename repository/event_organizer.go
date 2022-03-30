@@ -56,3 +56,14 @@ func (r *EventOrganizerRepository) Delete(id int) error {
 	}
 	return nil
 }
+
+func (r *EventOrganizerRepository) Update(id int, closure func(one *ent.EventOrganizerUpdateOne)) (*ent.EventOrganizer, error) {
+	ctx := context.Background()
+	eventOrganizer := r.Client.EventOrganizer.UpdateOneID(id)
+	closure(eventOrganizer)
+	updated, err := eventOrganizer.Save(ctx)
+	if err != nil {
+		return nil, err
+	}
+	return updated, nil
+}
