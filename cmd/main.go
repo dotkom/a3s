@@ -1,45 +1,28 @@
 package main
 
 import (
-	"fmt"
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
-	"github.com/dotkom/a3s/ent"
-	"github.com/dotkom/a3s/graph/generated"
-	"github.com/dotkom/a3s/repository"
-	"github.com/dotkom/a3s/resolvers"
+	"github.com/dotkom/a3s"
 	"github.com/go-chi/chi/v5"
 	_ "github.com/lib/pq"
 	"log"
 	"net/http"
-	"os"
 )
 
 func main() {
-	user := os.Getenv("POSTGRES_USER")
-	password := os.Getenv("POSTGRES_PASSWORD")
-	db := os.Getenv("POSTGRES_DB")
-	query := fmt.Sprintf("host=localhost port=5432 sslmode=disable user=%s password=%s dbname=%s", user, password, db)
-	client, err := ent.Open("postgres", query)
-	if err != nil {
-		log.Fatalf("failed connecting to postgres: %v", err)
-	}
+	env := a3s.GetEnvironment()
+	client := a3s.CreateEntClient(env)
 	defer client.Close()
-
-	server := chi.NewRouter()
-	resolver := resolvers.Resolver{
-		EventOrganizerRepository: &repository.EventOrganizerRepository{Client: client},
-		EventRepository:          &repository.EventRepository{Client: client},
-	}
-	config := generated.Config{Resolvers: &resolver}
-	schema := generated.NewExecutableSchema(config)
+	schema := a3s.CreateGraphQLSchema(client)
 	srv := handler.NewDefaultServer(schema)
 
+	server := chi.NewRouter()
 	server.Post("/", srv.ServeHTTP)
 	server.Get("/playground", playground.Handler("GraphQL Playground", "/"))
 
 	log.Println("started GraphQL server at http://localhost:8000/playground")
-	err = http.ListenAndServe(":8000", server)
+	err := http.ListenAndServe(":8000", server)
 	if err != nil {
 		log.Fatalf("failed to start server %s\n", err)
 	}
